@@ -1,12 +1,12 @@
 import express from "express";
-import {  deleteProduct, getProducts, saveProducts } from "../controllers/productController.js";
+import {  deleteProduct, getProducts, saveProducts, updateProduct } from "../controllers/productController.js";
 
 const productRouter = express.Router();
 
 productRouter.get("/", getProducts);
 productRouter.post("/" , saveProducts);
 productRouter.delete("/:productId" , deleteProduct)
-productRouter.put()
+productRouter.put("/:productId " , updateProduct)
 
 
 export default productRouter;
