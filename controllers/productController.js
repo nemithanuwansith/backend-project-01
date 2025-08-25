@@ -66,3 +66,11 @@ export async function deleteProduct(req,res){
 
 }  
 }
+export function updateProduct(req,res){
+   if(!isAdmin(req)){
+    res.status(403).json({
+      message : "You are not authorized to update a product"
+    })
+    return
+   }
+}
