@@ -4,6 +4,15 @@ import mongoose from 'mongoose';
 import productRouter from './Routes/productRoutes.js';
 import userRouter from './Routes/userRouter.js';
 import jwt from "jsonwebtoken";
+import orderRouter from './Routes/orderRoutes.js';
+
+
+
+
+
+
+
+
 const app = express();
 app.use (bodyParser.json())
 
@@ -51,6 +60,11 @@ mongoose.connect ("mongodb+srv://admin:123@cluster01.tw0vlnk.mongodb.net/?retryW
 
 app.use("/products",productRouter)
 app.use("/users",userRouter)
+app.use("/orders",orderRouter)
+
+
+
+
 
 app.listen(4000,
   ()=>{
