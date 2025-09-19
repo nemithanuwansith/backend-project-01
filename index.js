@@ -5,16 +5,16 @@ import productRouter from './Routes/productRoutes.js';
 import userRouter from './Routes/userRouter.js';
 import jwt from "jsonwebtoken";
 import orderRouter from './Routes/orderRoutes.js';
-
-
-
-
-
-
-
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
+
+
+
 app.use (bodyParser.json())
+app.use(cors())
 
 app.use(
   (req,res,next)=>{
@@ -40,15 +40,10 @@ app.use(
        }else{
         next()
        }
-   
-    
-    
-  
-
 }
 )
 
-mongoose.connect ("mongodb+srv://admin:123@cluster01.tw0vlnk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01")
+mongoose.connect(process.env.MONGODB_URL)
 .then(()=>
 {
   console.log("Connected to the database")
